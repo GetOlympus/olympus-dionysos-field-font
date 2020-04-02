@@ -30,12 +30,11 @@ return \GetOlympus\Dionysos\Field\Font::build('my_font_field_id', [
     'default'     => [
         'family'         => 'Open Sans',
         'backup'         => 'Arial, Helvetica, sans-serif',
-        'weight'         => 200,
-        'style'          => 'normal',
-        'subsets'        => 'latin',
+        'subset'         => 'latin',
+        'variant'        => 'regular',
         'size'           => '16px',
-        'line-height'    => '1.8',
-        'letter-spacing' => '0',
+        'lineheight'     => '1.8',
+        'letterspacing'  => '0',
         'color'          => '#000000',
     ],
     'description' => 'Select your fighting stage!',
@@ -59,12 +58,11 @@ Below, a `json_encode()` example to understand how data are stored in Database:
 {
   "family": "Open Sans",
   "backup": "Arial, Helvetica, sans-serif",
-  "weight": 200,
-  "style": "normal",
-  "subsets": "latin",
+  "subset": "latin",
+  "variant": "regular",
   "size": "16px",
-  "line-height": "1.8",
-  "letter-spacing": "0",
+  "lineheight": "1.8",
+  "letterspacing": "0",
   "color": "#000000"
 }
 ```
@@ -82,6 +80,11 @@ if (!empty($font)) {
 ```
 
 ## Release History
+
+0.0.2
+- Add ajax call
+- Add display
+- Add Google fonts
 
 0.0.1
 - Initial commit
