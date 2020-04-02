@@ -1,0 +1,24 @@
+{
+    "font.title": "Font",
+
+    "font.fontfamily_label": "Typographie :",
+    "font.fontbackup_label": "Remplacement :",
+    "font.fontsubset_label": "Alphabet :",
+    "font.fontvariant_label": "Variation :",
+    "font.fontsize_label": "Taille :",
+    "font.fontlineheight_label": "Interligne :",
+    "font.fontletterspacing_label": "Espace entre les lettres :",
+    "font.fontcolor_label": "Couleur :",
+    "font.fontpreview_label": "Prévisualisation :",
+
+    "font.fontfamily_default": "Choisissez une typographie",
+    "font.fontsubset_default": "Choisissez un alphabet",
+    "font.fontvariant_default": "Choisissez une variation",
+    "font.fontpreview_default": "1 2 3 4 5 6 7 8 9 0 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z",
+
+    "font.fontbackup_placeholder": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Oxygen-Sans\", \"Ubuntu\", \"Cantarell\", \"Helvetica Neue\", sans-serif",
+    "font.fontsize_placeholder": "16px",
+    "font.fontlineheight_placeholder": "1.8",
+    "font.fontletterspacing_placeholder": "0",
+    "font.fontcolor_placeholder": "#000000"
+}

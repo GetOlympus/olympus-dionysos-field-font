@@ -1,0 +1,109 @@
+{% extends template_path %}
+
+{% block id %}{{ identifier }}{% endblock %}
+{% block label %}<label>{{ title|raw }}</label>{% endblock %}
+
+{% block field %}
+    <div id="{{ identifier }}-font" class="dionysos-field font">
+        <input type="hidden" name="{{ name }}" value="" />
+
+        {% set family = value is not empty ? value.family : '' %}
+        {% set backup = value is not empty ? value.backup : '' %}
+        {% set subset = value is not empty ? value.subset : '' %}
+        {% set variant = value is not empty ? value.variant : '' %}
+
+        {% set size = value is not empty ? value.size : '' %}
+        {% set color = value is not empty ? value.color : '' %}
+        {% set lineheight = value is not empty ? value.lineheight : '' %}
+        {% set letterspacing = value is not empty ? value.letterspacing : '' %}
+
+        <div class="zeus-cols">
+            <div class="zeus-col is-6">
+                <label for="{{ name }}-family">{{ t_fontfamily_label }}</label>
+                <select id="{{ name }}-family" name="{{ name }}[family]" data-style="font-family">
+                    <option value="">{{ t_fontfamily_default }}</option>
+
+                    {% for font in fonts.items %}
+                        {% set selected = font.family == family ? ' selected="selected"' : '' %}
+                        <option value="{{ font.family }}"{{ selected }}>{{ font.family ~ ' (' ~ font.category ~ ')' }}</option>
+
+                        {% if loop.index == 10 %}
+                            <option value="" disabled="disabled">----------</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="zeus-col is-6">
+                <label for="{{ name }}-backup">{{ t_fontbackup_label }}</label>
+                <input type="text" id="{{ name }}-backup" name="{{ name }}[backup]" value="{{ backup }}" class="large-text" placeholder="{{ t_fontbackup_placeholder|e('html') }}" />
+            </div>
+
+
+            <div class="zeus-col is-6">
+                <label for="{{ name }}-subset">{{ t_fontsubset_label }}</label>
+                <select id="{{ name }}-subset" name="{{ name }}[subset]" data-style="">
+                    <option value="">{{ t_fontsubset_default }}</option>
+                </select>
+            </div>
+
+            <div class="zeus-col is-6">
+                <label for="{{ name }}-variant">{{ t_fontvariant_label }}</label>
+                <select id="{{ name }}-variant" name="{{ name }}[variant]" data-style="">
+                    <option value="">{{ t_fontvariant_default }}</option>
+                </select>
+            </div>
+
+
+            <div class="zeus-col is-3">
+                <label for="{{ name }}-size">{{ t_fontsize_label }}</label>
+                <input type="text" id="{{ name }}-size" name="{{ name }}[size]" value="{{ size }}" class="large-text" placeholder="{{ t_fontsize_placeholder|e('html') }}" data-style="font-size" />
+            </div>
+
+            <div class="zeus-col is-3">
+                <label for="{{ name }}-lineheight">{{ t_fontlineheight_label }}</label>
+                <input type="text" id="{{ name }}-lineheight" name="{{ name }}[lineheight]" value="{{ lineheight }}" class="large-text" placeholder="{{ t_fontlineheight_placeholder|e('html') }}" data-style="line-height" />
+            </div>
+
+            <div class="zeus-col is-3">
+                <label for="{{ name }}-letterspacing">{{ t_fontletterspacing_label }}</label>
+                <input type="text" id="{{ name }}-letterspacing" name="{{ name }}[letterspacing]" value="{{ letterspacing }}" class="large-text" placeholder="{{ t_fontletterspacing_placeholder|e('html') }}" data-style="letter-spacing" />
+            </div>
+
+            <div class="zeus-col is-6">
+                <label for="{{ name }}-color">{{ t_fontcolor_label }}</label>
+                <input type="text" id="{{ name }}-color" name="{{ name }}[color]" value="{{ color }}" class="large-text" placeholder="{{ t_fontcolor_placeholder|e('html') }}" data-style="color" />
+            </div>
+        </div>
+
+        <div class="font-canvas link-to-original">
+            <label>{{ t_fontpreview_label }}</label>
+            <p>{{ t_fontpreview_default }}</p>
+        </div>
+
+        <script>
+            (function($) {
+                $(document).ready(function() {
+                    $("#{{ identifier }}-font").dionysosFont({
+                        color: '#{{ name }}-color',
+                        family: '#{{ name }}-family',
+                        letterspacing: '#{{ name }}-letterspacing',
+                        lineheight: '#{{ name }}-lineheight',
+                        size: '#{{ name }}-size',
+                        subset: '#{{ name }}-subset',
+                        variant: '#{{ name }}-variant',
+
+                        ajax: '{{ identifier }}',
+                        canvas: '.font-canvas p',
+                        mode: '{{ mode }}',
+                        settings: {{ settings|json_encode|replace({"'": "&#39;"})|raw }}
+                    });
+                });
+            })(jQuery);
+        </script>
+    </div>
+{% endblock %}
+
+{% block description %}
+    {{ description|raw }}
+{% endblock %}
