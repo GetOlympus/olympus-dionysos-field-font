@@ -169,10 +169,6 @@ class Font extends Field
         $vars['api_key'] = '';
         $vars['fonts'] = $this->getFonts($vars['mode'], $vars['api_key']);
 
-//die('https://github.com/DannyCooper/olympus-google-fonts');
-//die('AIzaSyDXzJ13kwOQbPlM2UMGfDW7MQeLQI0lzI4');
-//die('https://developers.google.com/fonts/');
-
         // Update vars
         return $vars;
     }
