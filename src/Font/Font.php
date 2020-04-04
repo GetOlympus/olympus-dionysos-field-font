@@ -173,7 +173,6 @@ class Font extends Field
         return $vars;
     }
 
-
     /**
      * Return all available fonts.
      *
